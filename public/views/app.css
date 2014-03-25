@@ -1,0 +1,128 @@
+/** {
+	margin: 0;
+	padding: 0;
+    font-family: "Segoe UI Light","Segoe WPC","Segoe UI", Helvetica, Arial, "Arial Unicode MS", Sans-Serif;
+}
+*/
+
+/* BOOTSTRAP override*/
+
+html {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.navbar {
+  min-height: 25px;
+}
+
+.navbar-brand {
+  height: 20px;
+  padding: 2px 2px;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.navbar-text {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  body { padding-top: 25px; }
+}
+
+#images {
+    width:100%;
+    height:100%;
+    overflow:auto;
+}
+
+.photo {
+  float: left;
+  position: relative;
+  background-position: center;
+  background-size: 100% 100%;
+  background-color: #77c4a5;
+  margin: 2px;
+}
+
+.loading
+{
+  position: fixed;
+  left: 50%;
+  top: 10%;
+  z-index: 1000;
+  color: gray;
+}
+
+/*
+  We're using CSS transitions for when
+  the enter and move events are triggered
+  for the element that has the .repeated-item
+  class
+*/
+.repeated-item.ng-enter, .repeated-item.ng-move {
+  -webkit-transition:1.5s linear all;
+  -moz-transition:1.5s linear all;
+  -o-transition:1.5s linear all;
+  transition:1.5s linear all;
+  opacity:0;
+}
+ 
+/*
+ The ng-enter-active and ng-move-active
+ are where the transition destination properties
+ are set so that the animation knows what to
+ animate.
+*/
+.repeated-item.ng-enter.ng-enter-active,
+.repeated-item.ng-move.ng-move-active {
+  opacity:1;
+}
+ 
+/*
+  We're using CSS keyframe animations for when
+  the leave event is triggered for the element
+  that has the .repeated-item class
+*/
+.repeated-item.ng-leave {
+  -webkit-animation:0.5s my_animation;
+  -moz-animation:0.5s my_animation;
+  -o-animation:0.5s my_animation;
+  animation:0.5s my_animation;
+}
+ 
+@keyframes my_animation {
+  from { opacity:1; }
+  to { opacity:0; }
+}
+ 
+/*
+  Unfortunately each browser vendor requires
+  its own definition of keyframe animation code...
+*/
+@-webkit-keyframes my_animation {
+  from { opacity:1; }
+  to { opacity:0; }
+}
+ 
+@-moz-keyframes my_animation {
+  from { opacity:1; }
+  to { opacity:0; }
+}
+ 
+@-o-keyframes my_animation {
+  from { opacity:1; }
+  to { opacity:0; }
+}
