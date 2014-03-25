@@ -1,11 +1,9 @@
-(function() {
-    'use strict';
+'use strict';
 
+(function() {
     // Articles Controller Spec
     describe('MEAN controllers', function() {
-
         describe('ArticlesController', function() {
-
             // The $resource service augments the response object with methods for updating and deleting the resource.
             // If we were to use the standard toEqual matcher, our tests would fail because the test values would not match
             // the responses exactly. To solve the problem, we use a newly-defined toEqualData Jasmine matcher.
@@ -26,13 +24,13 @@
             var ArticlesController,
                 scope,
                 $httpBackend,
-                $routeParams,
+                $stateParams,
                 $location;
 
             // The injector ignores leading and trailing underscores here (i.e. _$httpBackend_).
             // This allows us to inject a service but then attach it to a variable
             // with the same name as the service.
-            beforeEach(inject(function($controller, $rootScope, _$location_, _$routeParams_, _$httpBackend_) {
+            beforeEach(inject(function($controller, $rootScope, _$location_, _$stateParams_, _$httpBackend_) {
 
                 scope = $rootScope.$new();
 
@@ -40,7 +38,7 @@
                     $scope: scope
                 });
 
-                $routeParams = _$routeParams_;
+                $stateParams = _$stateParams_;
 
                 $httpBackend = _$httpBackend_;
 
@@ -72,7 +70,7 @@
             it('$scope.findOne() should create an array with one article object fetched ' +
                 'from XHR using a articleId URL parameter', function() {
                     // fixture URL parament
-                    $routeParams.articleId = '525a8422f6d0f87f0e407a33';
+                    $stateParams.articleId = '525a8422f6d0f87f0e407a33';
 
                     // fixture response object
                     var testArticleData = function() {
@@ -195,8 +193,6 @@
                     expect(scope.articles.length).toBe(0);
 
                 }));
-
         });
-
     });
 }());

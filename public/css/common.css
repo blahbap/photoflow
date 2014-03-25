@@ -4,14 +4,14 @@
 }
 
 .content {
-    margin-top:50px;
+    margin-top:70px;
     width:100%
 }
 
 footer {
     position:fixed;
-    left:0px;
-    bottom:0px;
+    left:0;
+    bottom:0;
     height:30px;
     width:100%;
     background:#ddd;

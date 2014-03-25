@@ -1,13 +1,14 @@
+'use strict';
+
 /**
  * Module dependencies.
  */
 var should = require('should'),
-    app = require('../../../server'),
     mongoose = require('mongoose'),
     User = mongoose.model('User');
 
 //Globals
-var user;
+var user, user2;
 
 //The tests
 describe('<Unit Test>', function() {
@@ -17,27 +18,23 @@ describe('<Unit Test>', function() {
                 name: 'Full name',
                 email: 'test@test.com',
                 username: 'user',
-                password: 'password'
+                password: 'password',
+                provider: 'local'
             });
-            user2 = new User({
-                name: 'Full name',
-                email: 'test@test.com',
-                username: 'user',
-                password: 'password'
-            });
+            user2 = new User(user);
 
             done();
         });
 
         describe('Method Save', function() {
-            it('should begin with no users', function(done) {
-                User.find({}, function(err, users) {
+            it('should begin without the test user', function(done) {
+                User.find({ email: 'test@test.com' }, function(err, users) {
                     users.should.have.length(0);
                     done();
                 });
             });
 
-            it('should be able to save whithout problems', function(done) {
+            it('should be able to save without problems', function(done) {
                 user.save(done);
             });
 
@@ -49,7 +46,7 @@ describe('<Unit Test>', function() {
                 });
             });
 
-            it('should be able to show an error when try to save without name', function(done) {
+            it('should show an error when try to save without name', function(done) {
                 user.name = '';
                 return user.save(function(err) {
                     should.exist(err);
@@ -59,7 +56,7 @@ describe('<Unit Test>', function() {
         });
 
         after(function(done) {
-            User.remove().exec();
+            user.remove();
             done();
         });
     });

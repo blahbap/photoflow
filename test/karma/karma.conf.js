@@ -1,3 +1,5 @@
+'use strict';
+
 // Karma configuration
 // Generated on Sat Oct 05 2013 22:00:14 GMT+0700 (ICT)
 
@@ -18,9 +20,9 @@ module.exports = function(config) {
             'public/lib/angular-mocks/angular-mocks.js',
             'public/lib/angular-cookies/angular-cookies.js',
             'public/lib/angular-resource/angular-resource.js',
+            'public/lib/angular-ui-router/release/angular-ui-router.js',
             'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
             'public/lib/angular-bootstrap/ui-bootstrap.js',
-            'public/lib/angular-ui-utils/modules/route/route.js',
             'public/js/app.js',
             'public/js/config.js',
             'public/js/directives.js',
@@ -94,6 +96,6 @@ module.exports = function(config) {
 
         // Continuous Integration mode
         // if true, it capture browsers, run tests and exit
-        singleRun: false
+        singleRun: true
     });
 };

@@ -1,8 +1,9 @@
+'use strict';
+
 /**
  * Module dependencies.
  */
 var should = require('should'),
-    app = require('../../../server'),
     mongoose = require('mongoose'),
     User = mongoose.model('User'),
     Article = mongoose.model('Article');
@@ -22,7 +23,7 @@ describe('<Unit Test>', function() {
                 password: 'password'
             });
 
-            user.save(function(err) {
+            user.save(function() {
                 article = new Article({
                     title: 'Article Title',
                     content: 'Article Content',
@@ -52,13 +53,8 @@ describe('<Unit Test>', function() {
         });
 
         afterEach(function(done) {
-            Article.remove({});
-            User.remove({});
-            done();
-        });
-        after(function(done) {
-            Article.remove().exec();
-            User.remove().exec();
+            article.remove();
+            user.remove();
             done();
         });
     });
