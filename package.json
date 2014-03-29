@@ -36,7 +36,12 @@
     "lodash": "~2.4.1",
     "forever": "~0.10.11",
     "view-helpers": "~0.1.4",
-    "mean-logger": "0.0.1"
+    "mean-logger": "0.0.1",
+    "gm": "latest",
+    "exif":"latest",
+    "node-walker":"latest",
+    "underscore":"latest",
+    "image-size":"latest"
   },
   "devDependencies": {
     "grunt-env": "~0.4.1",

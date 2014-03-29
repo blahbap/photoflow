@@ -9,6 +9,9 @@ var express = require('express'),
     flash = require('connect-flash'),
     helpers = require('view-helpers'),
     assetmanager = require('assetmanager'),
+    util = require('util'),
+    fs = require('fs'),
+    _ = require("underscore"),
     config = require('./config');
 
 module.exports = function(app, passport, db) {
