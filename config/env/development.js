@@ -4,7 +4,7 @@ module.exports = {
     db: 'mongodb://localhost/mean-dev',
     photoDirectory: '/Users/Frank/Pictures/2014-03-23',
     app: {
-        name: 'MEAN - A Modern Stack - Development'
+        name: 'Photoflow - DEV'
     },
     facebook: {
         clientID: 'APP_ID',
