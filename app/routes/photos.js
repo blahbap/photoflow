@@ -96,7 +96,7 @@ module.exports = function (app) {
             } else {
                 return;
             }
-        })
+        });
     };
 
 
@@ -104,7 +104,7 @@ module.exports = function (app) {
         var batch = req.query.batch,
             idealHeight = req.query.idealHeight;
 
-        if (batchSize > photos.length && batch == 1) {
+        if (batchSize > photos.length && batch === 1) {
             res.send(JSON.stringify(photos));
         } else {
             res.send(JSON.stringify(photos.slice(batchSize * batch, batchSize * batch + batchSize)));
@@ -133,10 +133,12 @@ module.exports = function (app) {
                     .autoOrient()
                     .toBuffer(function (err, resizedData) {
                         if (err) throw err;
-                        cache[fileName] = resizedData;
+                        if (config.caching) {
+                            cache[fileName] = resizedData;
+                        }
                         res.contentType('image/jpg');
                         res.end(resizedData, 'binary');
-                    })
+                    });
 
             }
         } else {

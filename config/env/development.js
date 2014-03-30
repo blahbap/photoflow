@@ -3,6 +3,7 @@
 module.exports = {
     db: 'mongodb://localhost/mean-dev',
     photoDirectory: '/Users/Frank/Pictures/2014-03-23',
+    caching: true,
     app: {
         name: 'Photoflow - DEV'
     },
