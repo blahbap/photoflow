@@ -3,7 +3,7 @@
 module.exports = {
     db: 'mongodb://localhost/mean-test',
     photoDirectory: '/home/frank/photos',
-    caching:false,
+    caching:true,
     port: 3001,
     app: {
         name: 'Photoflow - Test'
