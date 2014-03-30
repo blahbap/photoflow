@@ -129,7 +129,7 @@ module.exports = function (app) {
             } else {
                 // console.log("From filesystem...");
                 gm(fileName)
-                    .resize(1200)
+                    //.resize(1200)
                     .autoOrient()
                     .toBuffer(function (err, resizedData) {
                         if (err) throw err;
