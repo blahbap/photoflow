@@ -5,19 +5,19 @@ angular.module('photoflow.system').directive('imageflow', ['$window','$document'
         restrict:'E',
         template:
 
-            '<div ng-repeat="photo in photos" class="photo repeated-item" style="width: {{photo.optWidth}}px; height: {{photo.optHeight}}px; background-image: url({{photo.url}});"></div>'
-        ,
+//            '<div ng-repeat="photo in photos" class="photo repeated-item" ng-style="width: {{photo.optWidth}}px; height: {{photo.optHeight}}px; background-image: url({{photo.url}});"></div>'
+            '<div ng-repeat="photo in photos" class="photo repeated-item" ng-style="photo.style"></div>',
 
         replace: false,
         link: function(scope, element) {
             var w = angular.element($window),
                 calculationInProgress = false,
-                batch = 0, //Batch pf photos to load
+                batch = 0, //Batch of photos to load
                 lastScrollTop = 0,
                 idealHeight = parseInt($window.innerHeight / 2);
 
             var getImages = function(batch) {
-                $http.get('/rest/photos?batch=' + batch + '&idealHeight=' + idealHeight)
+                $http.get('/rest/photos?batch=' + batch)
                     .then(function(result) {
                         scope.photos = scope.photos.concat(result.data);
                     });
@@ -82,6 +82,9 @@ angular.module('photoflow.system').directive('imageflow', ['$window','$document'
                         photo.optWidth = width;
                         photo.optHeight = height;
                         photo.rowno = idx;
+                        //photo.style = "{width: " + photo.optWidth + "px; height: " + photo.optHeight + "px; background-image: url(" + photo.url+")}";
+                        photo.style = { 'width':photo.optWidth +"px", 'height': photo.optHeight+"px", 'background-image':'url('+photo.url+')' };
+
                     });
                 });
 
@@ -104,19 +107,20 @@ angular.module('photoflow.system').directive('imageflow', ['$window','$document'
                     calculateImagesWidth();
                     scope.$apply();
                 }
-            })
+            });
 
             //Load new photos when reaching bottom of screen
             w.bind("scroll", function() {
                 var scrollTop = $(window).scrollTop() ;
                 if(scrollTop > lastScrollTop && ( scrollTop + $(window).height() > $(document).height() - 100)) {
                     scope.$apply();
-                    getImages(batch++)
-                };
+                    getImages(batch++);
+                }
                 lastScrollTop = scrollTop;
             });
 
             getImages(batch);
+            batch++;
         }
-    }
+    };
 }]);
