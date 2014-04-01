@@ -3,10 +3,12 @@
 angular.module('photoflow.system').directive('imageflow', ['$window','$document', '$http', function($window, $document, $http){
     return {
         restrict:'E',
+
         template:
 
-//            '<div ng-repeat="photo in photos" class="photo repeated-item" ng-style="width: {{photo.optWidth}}px; height: {{photo.optHeight}}px; background-image: url({{photo.url}});"></div>'
             '<div ng-repeat="photo in photos" class="photo repeated-item" ng-style="photo.style"></div>',
+
+//            '<div ng-repeat="photo in photos" class="photo repeated-item" ng-style="width: {{photo.optWidth}}px; height: {{photo.optHeight}}px; background-image: url({{photo.url}});"></div>'
 
         replace: false,
         link: function(scope, element) {
@@ -68,7 +70,8 @@ angular.module('photoflow.system').directive('imageflow', ['$window','$document'
                 angular.forEach(partition, function(row, idx) {
                     var summed_ratios,
                         width,
-                        height;
+                        height,
+                        rowWidth = 0;
                     row_buffer = [];
                     angular.forEach(row, function() {
                         return row_buffer.push(scope.photos[index++]);
@@ -76,13 +79,13 @@ angular.module('photoflow.system').directive('imageflow', ['$window','$document'
                     summed_ratios = row_buffer.reduce((function(sum, p) {
                         return sum += p.aspect;
                     }), 0);
+                    rowWidth = windowWidth - ((row_buffer.length - 1) * marginWidth * 2) - (marginWidth * 2);
                     return angular.forEach(row_buffer, function(photo) {
-                        width = parseInt((windowWidth -  ((row_buffer.length + 6) * marginWidth )) / summed_ratios * photo.aspect);
-                        height = parseInt(windowWidth / summed_ratios);
+                        width = parseInt(rowWidth / summed_ratios * photo.aspect);
+                        height = parseInt(rowWidth / summed_ratios);
                         photo.optWidth = width;
                         photo.optHeight = height;
                         photo.rowno = idx;
-                        //photo.style = "{width: " + photo.optWidth + "px; height: " + photo.optHeight + "px; background-image: url(" + photo.url+")}";
                         photo.style = { 'width':photo.optWidth +"px", 'height': photo.optHeight+"px", 'background-image':'url('+photo.url+')' };
 
                     });
