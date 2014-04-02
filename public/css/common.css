@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+body {
+    padding-top: 25px
+}
+
 body * {
     box-sizing: border-box;
 }
@@ -13,19 +17,6 @@ body * {
     margin-left:0
 }
 
-footer {
-    position:fixed;
-    left:0;
-    bottom:0;
-    height:30px;
-    width:100%;
-    background:#ddd;
-    box-shadow:0 8px 6px 6px black
-}
-
-footer p {
-    padding:5px 0 12px 10px
-}
 
 /* BOOTSTRAP override*/
 
@@ -34,7 +25,7 @@ html {
 }
 
 .navbar {
-    min-height: 25px;
+    min-height: 20px;
 }
 
 .navbar-brand {
@@ -50,7 +41,7 @@ html {
 }
 
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+html, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
     margin: 0;
     padding: 0;
     border: 0;
@@ -73,14 +64,18 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     margin: 2px;
 }
 
-.loading
+
+@media (max-width: 780px)
 {
-    position: fixed;
-    left: 50%;
-    top: 10%;
-    z-index: 1000;
-    color: gray;
+    body {
+        padding-top: 0;
+    }
+
+    .navbar {
+        display: none;
+    }
 }
+
 
 /*
   We're using CSS transitions for when
