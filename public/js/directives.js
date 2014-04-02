@@ -3,15 +3,10 @@
 angular.module('photoflow.system').directive('imageflow', ['$window','$document', '$http', function($window, $document, $http){
     return {
         restrict:'E',
-
         template:
-
             '<div ng-repeat="photo in photos" class="photo repeated-item" ng-style="photo.style"></div>',
-
-//            '<div ng-repeat="photo in photos" class="photo repeated-item" ng-style="width: {{photo.optWidth}}px; height: {{photo.optHeight}}px; background-image: url({{photo.url}});"></div>'
-
         replace: false,
-        link: function(scope, element) {
+        link: function(scope) {
             var w = angular.element($window),
                 calculationInProgress = false,
                 batch = 0, //Batch of photos to load
@@ -37,18 +32,13 @@ angular.module('photoflow.system').directive('imageflow', ['$window','$document'
 
             var calculateImagesWidth = function() {
 
-                var rows = 0,
-                    summedWidth = 0,
-                    weights = 0,
+                var rows,
+                    summedWidth,
+                    weights,
                     windowWidth = 0,
                     partition,
-                    scrollbarWidth = 15,
+                    scrollbarWidth,
                     marginWidth = 2;
-
-
-                var arrayWithmaxImagesInARow = _.max(partition, function(row) {
-                    return row.length;
-                });
 
                 scrollbarWidth = getScrollBarWidth();
 
@@ -96,7 +86,7 @@ angular.module('photoflow.system').directive('imageflow', ['$window','$document'
             };
 
             //Calculate image width when new photos are available in the array
-            scope.$watch('photos', function(newValue, oldValue) {
+            scope.$watch('photos', function(newValue) {
                 if (newValue.length > 0) {
                     //Get width of container for photos
                     calculateImagesWidth();

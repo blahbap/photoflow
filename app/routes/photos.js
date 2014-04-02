@@ -33,7 +33,7 @@ module.exports = function (app) {
                 console.log("All photos read from directory " + config.photoDirectory);
 
                 // Group photos
-                photosByYear = _.groupBy(photos, "year")
+                photosByYear = _.groupBy(photos, "year");
 
                 photoYears = _.chain(photos)
                     .map(function (photo) {
@@ -90,26 +90,21 @@ module.exports = function (app) {
                     }
                 });
             }
-            ;
             if (fnNext) {
                 fnNext();
-            } else {
-                return;
             }
         });
-    };
+    }
 
 
     app.get('/rest/photos', function (req, res) {
-        var batch = req.query.batch,
-            idealHeight = req.query.idealHeight;
+        var batch = req.query.batch;
 
         if (batchSize > photos.length && batch === 1) {
             res.send(JSON.stringify(photos));
         } else {
             res.send(JSON.stringify(photos.slice(batchSize * batch, batchSize * batch + batchSize)));
         }
-        ;
     });
 
     app.get('/rest/map', function (req, res) {
@@ -147,6 +142,5 @@ module.exports = function (app) {
     });
 
     readAllPhotos();
-
 
 };
