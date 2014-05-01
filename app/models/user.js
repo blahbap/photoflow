@@ -15,6 +15,7 @@ var UserSchema = new Schema({
         type: String,
         required: true
     },
+    isAdmin: Boolean,
     email: String,
     username: {
         type: String,

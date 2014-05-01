@@ -2,7 +2,7 @@
 
 module.exports = {
     db: 'mongodb://localhost/mean-dev',
-    photoDirectory: '/Users/Frank/Pictures/2014-03-23',
+    photoDirectory: '/Users/Frank/Pictures/Picasa\ Exports/Fotobok2009',
     caching: true,
     resize:true,
     app: {
@@ -24,8 +24,8 @@ module.exports = {
         callbackURL: 'http://localhost:3000/auth/github/callback'
     },
     google: {
-        clientID: 'APP_ID',
-        clientSecret: 'APP_SECRET',
+        clientID: '873238942193-6rjbrlboqp5u7u4i63d907uo4g7meppm.apps.googleusercontent.com',
+        clientSecret: 'hkefe34yURRpJShSP_s_Ek5J',
         callbackURL: 'http://localhost:3000/auth/google/callback'
     },
     linkedin: {

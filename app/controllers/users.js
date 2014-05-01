@@ -24,6 +24,18 @@ exports.signin = function(req, res) {
 };
 
 /**
+ * Login with Google
+ */
+exports.googlesignin = function(req, res) {
+    res.render('googlesignin', {
+        title: 'Signin with Google',
+        message: req.flash('error')
+    });
+};
+
+
+
+/**
  * Show sign up form
  */
 exports.signup = function(req, res) {

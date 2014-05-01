@@ -41,7 +41,8 @@
     "exif":"latest",
     "node-walker":"latest",
     "underscore":"latest",
-    "image-size":"latest"
+    "image-size":"latest",
+    "aws-sdk":"latest"
   },
   "devDependencies": {
     "grunt-env": "~0.4.1",
